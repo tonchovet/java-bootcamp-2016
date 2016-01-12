@@ -39,7 +39,7 @@ exercises**
 
     * [Topic 1: Maven](#topic-1-maven-1-day)
 
-    * [Topic 2: Test Driven Development](#topic-2-test-driven-development-3-days)
+    * [Topic 2: Test Driven Development](#topic-2-test-driven-development-2-days)
 
     * [Topic 3: Services](#topic-3-services-2-days)
 
@@ -47,7 +47,7 @@ exercises**
 
     * [Topic 5: NoSQL - MongoDB](#topic-5-nosql---mongodb-2-days)
     
-    * [Topic 6: Spring Core & REST](#topic-5-spring-core--rest-3-days)
+    * [Topic 6: Spring Core & REST](#topic-6-spring-core--rest-3-days)
 
 10. [Your First Project Starts Now!](#your-first-project-starts-now)
 
@@ -67,7 +67,7 @@ The training will start at a low level and does not require in depth knowledge o
 
 Four weeks total.
 
-Three weeks for guided learning and one week for app development. 
+Three weeks for guided learning and one week for app final project development. 
 
 → [index](#index)
 
@@ -100,7 +100,11 @@ Developers that move faster than average can go ahead and complete as much exerc
 
 4. Create your own [GitHub](https://github.com/) account. Follow this [guideline](https://help.github.com/articles/set-up-git) to setup your account. Also you can read further about Git in [Try Git](https://try.github.io/levels/1/challenges/1) or [Learn Git Branching](http://pcottle.github.io/learnGitBranching/)
 
-5. Fork this repo https://github.com/juanpablopizarro/java-bootcamp-2016 to use as a base to host the project code. Read [this](https://help.github.com/articles/fork-a-repo/) for instructions.
+  [Git manual] (https://www.atlassian.com/git/tutorials/setting-up-a-repository/)
+  
+  Git GUIs: [Source Tree] (https://www.sourcetreeapp.com/) Windows - [SmartGit] (http://www.syntevo.com/smartgit/download) Linux
+
+5. Fork this repo https://github.com/gastonabastoG/java-bootcamp-2016 to use as a base to host the project code. Read [this](https://help.github.com/articles/fork-a-repo/) for instructions.
 
 → [index](#index)
 
@@ -208,10 +212,11 @@ Commit your practice code.
 1. Create and build a simple Maven project:
 2. Customize the Maven project by adding new dependencies: log4j, junit.
 3. Create a simple unit test under src/test/java and run it. Then skip the unit test by property or by adding the skipping test configuration to your pom.xml file.
+4. Create a Simple Web Application
 
 #####Key Points:#####
 
-1,2,3
+1,2,4
 
 #####Commit:#####
 
@@ -267,7 +272,7 @@ Note: Do not implement JPA or ORM. Services should return in memory data only.
 
 #####Key Points:#####
 
-2,4,7
+1,2,4
 
 #####Commit:#####
 
@@ -391,7 +396,7 @@ Commit your practice code.
 
 ###Your First Project Starts Now!
 
-####Final Project (2 days)
+####Final Project (3 days)
 Create a functional shopping cart (just REST api). The minimum features to be completed are:
 
   - User registration and login.
