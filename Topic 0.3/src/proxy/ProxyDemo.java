@@ -1,3 +1,4 @@
+package proxy;
 import java.sql.SQLException;
 
 public class ProxyDemo {
@@ -10,8 +11,8 @@ public class ProxyDemo {
 
 		Proxy proxy = new Proxy();
 
-		BDAdapterFast bdAdapterFast = new BDAdapterFast();
-		bdAdapterFast.BDConnection(url, user, pass);
+		DBAdapterFast bdAdapterFast = new DBAdapterFast();
+		bdAdapterFast.getDBConnection(url, user, pass);
 
 		proxy.BDConnection(url, user, pass);
 

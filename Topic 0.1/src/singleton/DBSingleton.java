@@ -1,3 +1,4 @@
+package singleton;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -6,7 +7,11 @@ public class DBSingleton {
 
 	private static Connection con = null;
 	
-		public static Connection getConnection(){
+	private DBSingleton(){
+		
+	}
+	
+	public static Connection getConnection(){
 			
 			try {
 					if ( con == null || con.isClosed() )
@@ -23,10 +28,5 @@ public class DBSingleton {
 					System.out.println( e.getMessage() );
 				}
 			return con;
-			}
-			
-			public static void main ( String[] args)
-			{
-				Connection con = DBSingleton.getConnection();
 			}
 }

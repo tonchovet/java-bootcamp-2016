@@ -1,7 +1,8 @@
+package proxy;
 
-public class BDAdapterSlow extends BDAdapter{
+public class DBAdapterSlow extends DBAdapter{
 
-	public BDAdapterSlow(){
+	public DBAdapterSlow(){
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
