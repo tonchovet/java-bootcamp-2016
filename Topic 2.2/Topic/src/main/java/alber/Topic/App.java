@@ -14,32 +14,6 @@ public class App
 {
 	public static TreeMap < Integer, Message > blog = Blog.getInstance();
 	
-	public ArrayList<String> getAuthorMessage( String author )
-		{
-			Message message = new Message();
-		
-			ArrayList<String> authorMessage = new ArrayList<String>();
-		
-			// Get a set of the entries
-			Set set = Blog.getInstance().entrySet();
-			// Get an iterator
-			Iterator i = set.iterator();
-			// Display elements
-			while(i.hasNext()) {
-	    	  
-				Map.Entry me = (Map.Entry)i.next();
-	         
-				message = blog.get(me.getKey());
-				
-				if ( message.getAuthor() == author )
-				{
-					System.out.println(me.getKey() + ": " + message.getMessage());
-				}
-			}
-		
-		return authorMessage;
-		}
-	
     public static void main( String[] args )
     {
     	
@@ -70,6 +44,10 @@ public class App
         System.out.println( "Hello World!" );
         
         Blog.getAuthorMessage("fabricio");
+        
+        Blog.LastTenMessages();
+        
+        blog.remove(3);
         
     }
     

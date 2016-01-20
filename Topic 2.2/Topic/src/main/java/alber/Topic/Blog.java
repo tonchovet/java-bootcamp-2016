@@ -10,7 +10,7 @@ public class Blog {
 
 	private static TreeMap < Integer, Message > blog = new TreeMap<Integer, Message>();
 	
-	private Blog() {
+	Blog() {
 	}
 
 	public static TreeMap < Integer, Message > getInstance() {
@@ -65,7 +65,7 @@ public class Blog {
 		// Get an iterator
 		Iterator i = set.iterator();
 		// Display elements
-		while(i.hasNext() || x <= 10) {
+		do{
 			
 			Map.Entry me = (Map.Entry)i.next();
          
@@ -74,7 +74,8 @@ public class Blog {
 			System.out.println(me.getKey() + ": " + message.getMessage());
 			
 			x = x + 1;
-		}
+			
+		}while(i.hasNext() && x <= 10);
 	
 	return lastTenMessages;
 	}
