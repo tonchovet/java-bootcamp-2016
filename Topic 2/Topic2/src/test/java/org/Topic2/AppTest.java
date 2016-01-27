@@ -1,38 +1,39 @@
 package org.Topic2;
 
-import junit.framework.Test;
+import org.easymock.EasyMock;
+
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.junit.Before;
+import org.junit.Test;
 
-/**
- * Unit test for simple App.
- */
 public class AppTest 
     extends TestCase
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+	Message mess = EasyMock.createMock( Message.class);
+	
+	private MessageHandler messageHandlerMock;
+	
+    @Before
+    public void setUp(){
+    	
+    	messageHandlerMock = EasyMock.createMock( MessageHandler.class);
+    	
+    	EasyMock.expect(messageHandlerMock.getMessage(1)).andReturn(new Message("alber", "algo pusieron primero"));
+    	
+    	EasyMock.expect(messageHandlerMock.getMessage(1)).andReturn(new Message("fabricio", "algo pusieron despues"));
+    	
+    	EasyMock.expect(messageHandlerMock.getMessage(1)).andReturn(new Message("alber", "algo pusieron despues de eso"));
+    	
+    	EasyMock.replay(messageHandlerMock);
+    	
     }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    
+    @Test
+    public void testBl(){
+    	
+    	Blog bl = new Blog();
+    	bl.setMessageHandler(messageHandlerMock);
+    	assertEquals(3, bl.saveMessage());
     }
 }

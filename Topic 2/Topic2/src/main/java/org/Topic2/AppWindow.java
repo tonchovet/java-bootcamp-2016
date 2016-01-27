@@ -33,27 +33,15 @@ public class AppWindow extends JApplet {
 	public void init(){
 		
 		
-		Message message1 = new Message();
-    	
-    	message1.setAuthor("alber");
-    	
-    	message1.setMessage("algo pusieron primero");
+Message message1 = new Message("alber", "algo pusieron primero");
     	
     	blog.put(1, message1);
     	
-    	Message message2 = new Message();
-    	
-    	message2.setAuthor("fabricio");
-    	
-    	message2.setMessage("algo pusieron despues");
+    	Message message2 = new Message("fabricio", "algo pusieron despues");
     	
     	blog.put(2, message2);
     	
-    	Message message3 = new Message();
-    	
-    	message3.setAuthor("alber");
-    	
-    	message3.setMessage("algo pusieron despues de eso");
+    	Message message3 = new Message("alber", "algo pusieron despues de eso");
     	
     	blog.put(3, message3);
     	
@@ -100,7 +88,7 @@ public class AppWindow extends JApplet {
 		
         if( evt.target.equals( btnPutMessage ) )
         {
-        	Message message1 = new Message();
+        	Message message1 = new Message("", "");
         	
         	message1.setAuthor( txtAuthor.getText() );
         	
@@ -122,11 +110,11 @@ public class AppWindow extends JApplet {
         {
         	int x = 0;
         	
-        	Message message = new Message();
+        	Message message = new Message("", "");
         	
     		ArrayList<String> authorMessage = new ArrayList<String>();
     	
-    		authorMessage = Blog.getAuthorMessage(txtAuthor.getText());
+    		authorMessage = MessageHandler.getAuthorMessage(txtAuthor.getText());
     		
     		// Get an iterator
     		Iterator i = authorMessage.iterator();
@@ -158,11 +146,11 @@ public class AppWindow extends JApplet {
         {
         	int x = 0;
         	
-        	Message message = new Message();
+        	Message message = new Message("", "");
         	
     		ArrayList<String> lastTen = new ArrayList<String>();
     	
-    		lastTen = Blog.LastTenMessages();
+    		lastTen = MessageHandler.LastTenMessages();
     		
     		// Get an iterator
     		Iterator i = lastTen.iterator();

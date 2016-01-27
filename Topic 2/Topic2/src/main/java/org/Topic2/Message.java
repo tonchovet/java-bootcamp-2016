@@ -5,6 +5,12 @@ public class Message {
 	private String message;
 	private String author;
 	
+	Message(String author, String message)
+	{
+		this.author = author;
+		this.message = message;
+	}
+	
 	public String getMessage()
 	{
 		return this.message;
