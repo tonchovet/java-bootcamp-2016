@@ -24,9 +24,9 @@ USE `high-school`;
 
 CREATE TABLE `teacher` (
   `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `first name` VARCHAR(20) COLLATE utf8_general_ci DEFAULT NULL,
-  `last name` VARCHAR(20) COLLATE utf8_general_ci DEFAULT NULL,
-  `date of birth` DATE DEFAULT NULL,
+  `first_name` VARCHAR(20) COLLATE utf8_general_ci DEFAULT NULL,
+  `last_name` VARCHAR(20) COLLATE utf8_general_ci DEFAULT NULL,
+  `date_of_birth` DATE DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB
 AUTO_INCREMENT=4 ROW_FORMAT=DYNAMIC CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
@@ -39,11 +39,11 @@ AUTO_INCREMENT=4 ROW_FORMAT=DYNAMIC CHARACTER SET 'utf8' COLLATE 'utf8_general_c
 CREATE TABLE `course` (
   `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(20) COLLATE utf8_general_ci DEFAULT NULL,
-  `hours by week` INTEGER(11) DEFAULT NULL,
-  `assignated teacher` INTEGER(11) DEFAULT NULL,
+  `hours_by_week` INTEGER(11) DEFAULT NULL,
+  `assigned_teacher` INTEGER(11) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  KEY `assignated teacher` (`assignated teacher`) USING BTREE,
-  CONSTRAINT `assignated teacher` FOREIGN KEY (`assignated teacher`) REFERENCES `teacher` (`id`)
+  KEY `assignated teacher` (`assigned_teacher`) USING BTREE,
+  CONSTRAINT `assignated teacher` FOREIGN KEY (`assigned_teacher`) REFERENCES `teacher` (`id`)
 ) ENGINE=InnoDB
 AUTO_INCREMENT=4 ROW_FORMAT=DYNAMIC CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 ;
@@ -54,13 +54,13 @@ AUTO_INCREMENT=4 ROW_FORMAT=DYNAMIC CHARACTER SET 'utf8' COLLATE 'utf8_general_c
 
 CREATE TABLE `schedule time` (
   `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `start time` INTEGER(11) DEFAULT NULL,
-  `end time` INTEGER(11) DEFAULT NULL,
+  `start_time` INTEGER(11) DEFAULT NULL,
+  `end_time` INTEGER(11) DEFAULT NULL,
   `day` VARCHAR(20) COLLATE utf8_general_ci DEFAULT NULL,
-  `assigned course` INTEGER(11) DEFAULT NULL,
+  `assigned_course` INTEGER(11) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  KEY `assigned course` (`assigned course`) USING BTREE,
-  CONSTRAINT `schedule time_fk1` FOREIGN KEY (`assigned course`) REFERENCES `course` (`id`)
+  KEY `assigned course` (`assigned_course`) USING BTREE,
+  CONSTRAINT `schedule time_fk1` FOREIGN KEY (`assigned_course`) REFERENCES `course` (`id`)
 ) ENGINE=InnoDB
 AUTO_INCREMENT=4 ROW_FORMAT=DYNAMIC CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 ;
@@ -71,10 +71,10 @@ AUTO_INCREMENT=4 ROW_FORMAT=DYNAMIC CHARACTER SET 'utf8' COLLATE 'utf8_general_c
 
 CREATE TABLE `student` (
   `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `first name` VARCHAR(20) COLLATE utf8_general_ci DEFAULT NULL,
-  `last name` VARCHAR(20) COLLATE utf8_general_ci DEFAULT NULL,
-  `registration number` INTEGER(11) DEFAULT NULL,
-  `date of birth` DATE DEFAULT NULL,
+  `first_name` VARCHAR(20) COLLATE utf8_general_ci DEFAULT NULL,
+  `last_name` VARCHAR(20) COLLATE utf8_general_ci DEFAULT NULL,
+  `registration_number` INTEGER(11) DEFAULT NULL,
+  `date_of_birth` DATE DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB
 AUTO_INCREMENT=11 ROW_FORMAT=DYNAMIC CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
@@ -86,10 +86,10 @@ AUTO_INCREMENT=11 ROW_FORMAT=DYNAMIC CHARACTER SET 'utf8' COLLATE 'utf8_general_
 
 CREATE TABLE `student notes` (
   `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `partial note 1` INTEGER(11) DEFAULT NULL,
-  `partial note 2` INTEGER(11) DEFAULT NULL,
-  `partial note 3` INTEGER(11) DEFAULT NULL,
-  `final note` INTEGER(11) DEFAULT NULL,
+  `partial_note_1` INTEGER(11) DEFAULT NULL,
+  `partial_note_2` INTEGER(11) DEFAULT NULL,
+  `partial_note_3` INTEGER(11) DEFAULT NULL,
+  `final_note` INTEGER(11) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB
 AUTO_INCREMENT=1 ROW_FORMAT=DYNAMIC CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
@@ -119,7 +119,7 @@ AUTO_INCREMENT=31 ROW_FORMAT=DYNAMIC CHARACTER SET 'utf8' COLLATE 'utf8_general_
 # Data for the `teacher` table  (LIMIT 0,500)
 #
 
-INSERT INTO `teacher` (`id`, `first name`, `last name`, `date of birth`) VALUES
+INSERT INTO `teacher` (`id`, `first_name`, `last_name`, `date_of_birth`) VALUES
   (1,'Jose','Perez','1990-08-05'),
   (2,'Maria','Carmen','1991-06-04'),
   (3,'Miguel','Juarez','1980-08-10');
@@ -129,7 +129,7 @@ COMMIT;
 # Data for the `course` table  (LIMIT 0,500)
 #
 
-INSERT INTO `course` (`id`, `name`, `hours by week`, `assignated teacher`) VALUES
+INSERT INTO `course` (`id`, `name`, `hours_by_week`, `assigned_teacher`) VALUES
   (1,'math',4,1),
   (2,'spanish',2,2),
   (3,'french',3,3);
@@ -139,7 +139,7 @@ COMMIT;
 # Data for the `schedule time` table  (LIMIT 0,500)
 #
 
-INSERT INTO `schedule time` (`id`, `start time`, `end time`, `day`, `assigned course`) VALUES
+INSERT INTO `schedule time` (`id`, `start_time`, `end_time`, `day`, `assigned_course`) VALUES
   (1,14,15,'Monday',1),
   (2,14,16,'Friday',2),
   (3,14,16,'Tuesday',3);
@@ -149,7 +149,7 @@ COMMIT;
 # Data for the `student` table  (LIMIT 0,500)
 #
 
-INSERT INTO `student` (`id`, `first name`, `last name`, `registration number`, `date of birth`) VALUES
+INSERT INTO `student` (`id`, `first_name`, `last_name`, `registration_number`, `date_of_birth`) VALUES
   (1,'Agustin','Bozicovich',462450,'1995-01-01'),
   (2,'Albert','Bozico',462451,'1995-01-01'),
   (3,'Eli','Draco',462452,'1995-02-01'),
