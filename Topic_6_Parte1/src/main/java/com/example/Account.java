@@ -18,16 +18,9 @@ import java.util.Set;
 @Table(name = "accounts")
 public class Account {
 
-    //@OneToMany(mappedBy = "accounts")
-    //private Set<OrderRepository> orders = new HashSet<>();
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    //public Set<OrderRepository> getOrders() {
-    //    return orders;
-    //}
 
     public Long getId() {
         return id;
