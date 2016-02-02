@@ -26,6 +26,14 @@ public class Order {
 	this.purchaseNumber = purchaseNumber;
 	this.creditCard = creditCard;
 	}
+	
+	public Order(Long account, Long product, int purchaseNumber ) {
+		
+		this.account = account;
+		this.product = product;
+		this.purchaseNumber = purchaseNumber;
+		
+		}
 
 	public Long getId() {
 	return id;
