@@ -16,7 +16,7 @@ public class AccountController {
 	  public String login(String username, String password) {
 	    try {
 	    	
-	      if ( accountRepository.Login(username, password).size() == 1   )
+	      if ( accountRepository.findByUsernameAndPassword( username, password).size() == 1  )
 	      {
 	    	  return "entro con exito";
 	      }
