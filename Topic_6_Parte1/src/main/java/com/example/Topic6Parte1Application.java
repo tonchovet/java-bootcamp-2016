@@ -58,8 +58,8 @@ public class Topic6Parte1Application {
 				
 			
 				// save a couple of products
-				repository1.save(new Product("PC", "Pentium", 3000.00, "elec"));
-				repository1.save(new Product("Phone", "Red", 200.00, "elec"));
+				//repository1.save(new Product("PC", "Pentium", 3000.00, "elec"));
+				//repository1.save(new Product("Phone", "Red", 200.00, "elec"));
 				//repository.save(new Product("cuca", "cuca20"));
 				//repository.save(new Product("mate", "palo"));
 	

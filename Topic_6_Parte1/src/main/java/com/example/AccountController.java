@@ -18,11 +18,11 @@ public class AccountController {
 	    	
 	      if ( accountRepository.findByUsernameAndPassword( username, password).size() == 1  )
 	      {
-	    	  return "entro con exito";
+	    	  return "Login succesful";
 	      }
 	      else
 	      {
-	    	  return "NO entro con exito";
+	    	  return "Login  NOT succesful";
 	      }
 	      
 	    }
@@ -52,18 +52,18 @@ public class AccountController {
 	    	
 	      List<Product> list = productRepository.findByName(name);
 	      
-	      String result = "";
+	      String result = "" + list.size() + "";
 	      
-	      for ( int i = 0 ; i <= list.size(); i++)
+	      for ( int i = 0 ; i < list.size() ; i++)
 	      {
-	    	  result.concat(list.toString());
-	    	  result.concat("/n");
+	    	  result = result.concat( "<p>" + list.get(i).getId() + ", " + list.get(i).getName() + ", " + list.get(i).getDescription() + ", " + list.get(i).getCategory() );
+	    	  result = result.concat(";</p>");
 	      }
 	      
 	      return result;
 	    }
 	    catch (Exception ex) {
-	      return "Error find product";
+	      return "Error find product by name";
 	    }
 	  }
 	
@@ -75,18 +75,18 @@ public class AccountController {
 	    	
 	      List<Product> list = productRepository.findByCategory(category);
 	      
-	      String result = "";
+	      String result = "" + list.size() + "";
 	      
-	      for ( int i = 0 ; i <= list.size(); i++)
+	      for ( int i = 0 ; i < list.size(); i++)
 	      {
-	    	  result.concat(list.toString());
-	    	  result.concat("/n");
+	    	  result = result.concat("<p>" + list.get(i).getId() + ", " + list.get(i).getName() + ", " + list.get(i).getDescription() + ", " + list.get(i).getCategory() );
+	    	  result = result.concat(";</p> ");
 	      }
 	      
 	      return result;
 	    }
 	    catch (Exception ex) {
-	      return "Error find product";
+	      return "Error find product by category";
 	    }
 	  }
 	  
@@ -94,14 +94,14 @@ public class AccountController {
 	  
 	  @RequestMapping("/add-product")
 	  @ResponseBody
-	  public String addProduct(Long account, Long product, int purchaseNumber) 
+	  public String addProduct(Long account, Long product, int purchasenumber) 
 	  {
 	    try {
 	    
-	      Order order = new Order( account, product, purchaseNumber );
+	      Order order = new Order( account, product, purchasenumber );
 	      orderRepository.save(order);
 	      
-	      return order.toString();
+	      return ("<p>" + order.getAccount() + ", " + order.getProduct() + ", " + order.getPurchasenumber() + "</p>" );
 	      
 	    }
 	    catch (Exception ex) {
@@ -112,41 +112,61 @@ public class AccountController {
 	  
 	  @RequestMapping("/delete-product")
 	  @ResponseBody
-	  public String deleteProduct(Long account, Long product, int purchaseNumber) 
+	  public String deleteProduct(Long account, Long product, int purchasenumber) 
 	  {
 	    try {
 	    
-	      Order order = new Order( account, product, purchaseNumber );
-	      orderRepository.delete(order);
+	    	List<Order> list = orderRepository.findByAccountAndProductAndPurchasenumber(account, product, purchasenumber);
+	    	
+	    	String result = "" + list.size() + "";
+	    	
+	    	if ( list.size() == 0 )
+	    	{
+	    		result = result.concat(", NO se pudo eliminar producto");
+	    	}
+	    	else
+	    	{
+	    		Order order = list.get(list.lastIndexOf(list));
+	    	
+	    		orderRepository.delete(order.getId());
+	    		
+	    		result = result.concat(", Se pudo eliminar producto");
+	    	}
 	      
-	      return "producto eliminado";
+	      return result;
 	      
 	    }
 	    catch (Exception ex) {
-	      return "Error add-product";
+	      return "Error delete-product";
 	    }
 	  }
 	  
 	  
 	  @RequestMapping("/buy-products")
 	  @ResponseBody
-	  public String buyProducts(Long account, int purchaseNumber, int creditCard) 
+	  public String buyProducts(Long account, int purchasenumber, int creditcard) 
 	  {
 	    try {
 	    
-	    	List<Order> list = orderRepository.findByPurchaseNumber(purchaseNumber);
+	    	List<Order> list = orderRepository.findByPurchasenumber(purchasenumber);
 	    	
-	    	for ( int i = 0; i <= list.size() ; i ++ )
+	    	String result = "" + list.size() + "";
+	    	
+	    	for ( int i = 0; i < list.size() ; i ++ )
 	    	{
 	    		Order order = list.get(i);
-	    		order.setCredit_Card(creditCard);
+	    		
+	    		result = result.concat("<p>" + order.getAccount() + ", " + order.getProduct() + ", " + order.getPurchasenumber() );
+		    	result = result.concat(";</p> ");
+	    		
+	    		order.setCreditcard(creditcard);
 	    	}
 	      
-	      return "compra realizada";
+	      return "Succes buy order";
 	      
 	    }
 	    catch (Exception ex) {
-	      return "Error al comprar producto";
+	      return "Error buy order";
 	    }
 	  }
 	  

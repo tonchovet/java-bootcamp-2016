@@ -16,22 +16,22 @@ public class Order {
 	
 	private Long account;
 	private Long product;
-	private int purchaseNumber;
-	private int creditCard;
+	private int purchasenumber;
+	private int creditcard;
 
-	public Order(Long account, Long product, int purchaseNumber, int creditCard) {
+	public Order(Long account, Long product, int purchasenumber, int creditcard) {
 	
 	this.account = account;
 	this.product = product;
-	this.purchaseNumber = purchaseNumber;
-	this.creditCard = creditCard;
+	this.purchasenumber = purchasenumber;
+	this.creditcard = creditcard;
 	}
 	
-	public Order(Long account, Long product, int purchaseNumber ) {
+	public Order(Long account, Long product, int purchasenumber ) {
 		
 		this.account = account;
 		this.product = product;
-		this.purchaseNumber = purchaseNumber;
+		this.purchasenumber = purchasenumber;
 		
 		}
 
@@ -60,18 +60,18 @@ public class Order {
 	}
 	
 	public int getCreditCard() {
-		return creditCard;
+		return creditcard;
 	}
 
-	public void setCredit_Card(int creditCard) {
-		this.creditCard = creditCard;
+	public void setCreditcard(int creditcard) {
+		this.creditcard = creditcard;
 	}
 	
-	public int getPurchaseNumber() {
-		return purchaseNumber;
+	public int getPurchasenumber() {
+		return purchasenumber;
 	}
 
-	public void setPurchaseNumber(int purchaseNumber) {
-		this.purchaseNumber = purchaseNumber;
+	public void setPurchasenumber(int purchasenumber) {
+		this.purchasenumber = purchasenumber;
 	}
 }
