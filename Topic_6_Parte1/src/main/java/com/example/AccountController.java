@@ -126,7 +126,7 @@ public class AccountController {
 	    	}
 	    	else
 	    	{
-	    		Order order = list.get(list.lastIndexOf(list));
+	    		Order order = list.get(0);
 	    	
 	    		orderRepository.delete(order.getId());
 	    		
@@ -160,9 +160,13 @@ public class AccountController {
 		    	result = result.concat(";</p> ");
 	    		
 	    		order.setCreditcard(creditcard);
+	    		
+	    		orderRepository.save(order);
 	    	}
 	      
-	      return "Succes buy order";
+	      result = result.concat("<p>Succes buy order</p>");
+	      
+	      return result;
 	      
 	    }
 	    catch (Exception ex) {
