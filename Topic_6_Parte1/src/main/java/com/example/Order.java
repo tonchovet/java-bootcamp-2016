@@ -74,4 +74,8 @@ public class Order {
 	public void setPurchasenumber(int purchasenumber) {
 		this.purchasenumber = purchasenumber;
 	}
+	
+	Order(){
+		
+	}
 }
