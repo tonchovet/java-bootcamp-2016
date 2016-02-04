@@ -122,7 +122,7 @@ public class AccountController {
 	    	
 	    	if ( list.size() == 0 )
 	    	{
-	    		result = result.concat(", NO se pudo eliminar producto");
+	    		result = result.concat(", Could NOT delete product from order");
 	    	}
 	    	else
 	    	{
@@ -130,7 +130,7 @@ public class AccountController {
 	    	
 	    		orderRepository.delete(order.getId());
 	    		
-	    		result = result.concat(", Se pudo eliminar producto");
+	    		result = result.concat(", Product deleted from order");
 	    	}
 	      
 	      return result;
